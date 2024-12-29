@@ -28,18 +28,14 @@ const Dashboard = ({ children }) => {
             {
               key: '1',
               icon: <UserOutlined />,
-              label: 'nav 1',
+              label: 'Users',
             },
             {
               key: '2',
               icon: <VideoCameraOutlined />,
-              label: 'nav 2',
-            },
-            {
-              key: '3',
-              icon: <UploadOutlined />,
-              label: 'nav 3',
-            },
+              label: 'Admin',
+              disabled:true
+            }
           ]}
         />
       </Sider>
@@ -58,12 +54,7 @@ const Dashboard = ({ children }) => {
         </Header>
         <Content
           style={{
-            margin: '24px 16px',
             padding: 24,
-            minHeight: 500,
-            height:'auto',
-            background: colorBgContainer,
-            borderRadius: borderRadiusLG,
           }}
         >
           {children} {/* Render dynamic content passed as children */}
