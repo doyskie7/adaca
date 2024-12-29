@@ -7,10 +7,7 @@ export const UserActionCell = ({ text, data }) => {
     const dispatch = useDispatch();
     const confirm = (e) => {
         dispatch(setCurrentUser({...data, action:'delete'}))
-      };
-      const cancel = (e) => {
-        
-      };
+    };
     return (
         <Space>
             <Button type="primary" style={{ backgroundColor: '#1890ff', borderColor: '#1890ff' }} 
@@ -27,7 +24,7 @@ export const UserActionCell = ({ text, data }) => {
                 title="Delete the task"
                 description="Are you sure to delete this user?"
                 onConfirm={confirm}
-                onCancel={cancel}
+                onCancel={(e)=>{}}
                 okText="Yes"
                 cancelText="No"
             >
