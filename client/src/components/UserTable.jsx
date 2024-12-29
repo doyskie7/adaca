@@ -2,10 +2,12 @@ import { Table, Card } from "antd";
 import { UserColumn } from "../constant/UserColumn.jsx";
 import { usePrivateGetRequestsMutation } from "../hooks/apiServiceReducer";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 const UserTable = () => {
     
     const [userList,setUserList] = useState([])
     const [privateGetRequests, { isLoading, error}] = usePrivateGetRequestsMutation();
+    const response = useSelector((state) => state?.response?.item)
 
     useEffect(()=>{
         const fetchUsers = async () =>{
@@ -23,7 +25,7 @@ const UserTable = () => {
         }
         fetchUsers()
         return ()=>{}
-    },[]) 
+    },[response?.reload]) 
 
     return (
         <Card> 

@@ -18,6 +18,6 @@ export const UserColumn = [
     {
       title: 'Action',
       dataIndex: 'action',
-      render: (text) => <UserActionCell status={text} />,
+      render: (text,data) => <UserActionCell status={text} data={data}/>,
     },
   ]

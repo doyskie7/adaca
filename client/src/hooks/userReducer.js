@@ -11,7 +11,7 @@ export const clearCurrentUser = () => ({
 });
 
 const initialState = {
-    selected: null,
+    item: null,
 };
 
 const userReducer = (state = initialState, action) => {
@@ -19,12 +19,12 @@ const userReducer = (state = initialState, action) => {
         case SET_USER:
             return {
                 ...state,
-                selected: action.payload,
+                item: action.payload,
             };
         case CLEAR_USER:
             return {
                 ...state,
-                selected: null,
+                item: null,
             };
         default:
             return state;

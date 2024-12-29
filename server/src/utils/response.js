@@ -10,6 +10,6 @@ export const success = (req, res, result) => {
   res.status(200);
   res.send({
     data: result,
-    message: result?.message || "Success",
+    message: result?.message || "Successfully initiated",
   });
 };

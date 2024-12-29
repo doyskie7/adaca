@@ -100,7 +100,7 @@ class UserController {
                 },
             });
             if (result[0] > 0) {
-                return success(req, res, result);
+                return success(req, res, body);
             } else {
                 return fail(req, res, {
                     message: ERROR_MESSAGES?.USER_NOT_FOUND,
