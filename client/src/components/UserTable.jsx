@@ -1,42 +1,33 @@
 import { Table, Card } from "antd";
-import { UserColumn } from "../constant/UserColumn";
+import { UserColumn } from "../constant/UserColumn.jsx";
 import { usePrivateGetRequestsMutation } from "../hooks/apiServiceReducer";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 const UserTable = () => {
     
-    let [privateGetRequests, { isLoading, error}] = usePrivateGetRequestsMutation();
-
-    const dataSource = [
-        {
-          key: '1',
-          name: 'Mike',
-          age: 32,
-          address: '10 Downing Street',
-        },
-        {
-          key: '2',
-          name: 'John',
-          age: 42,
-          address: '10 Downing Street',
-        },
-      ];
+    const [userList,setUserList] = useState([])
+    const [privateGetRequests, { isLoading, error}] = usePrivateGetRequestsMutation();
 
     useEffect(()=>{
         const fetchUsers = async () =>{
             let users = await privateGetRequests({
                 route: '/users',
-                query: {},
             })
-            console.log(users)
+            setUserList(users?.data?.data?.map((item)=>{
+                return {
+                    key: item?.id,
+                    full_name: item?.full_name,
+                    email:  item?.email,
+                    contact: item?.contact,
+                }
+            }))
         }
         fetchUsers()
         return ()=>{}
     },[]) 
 
-      
     return (
         <Card> 
-            <Table dataSource={dataSource} columns={UserColumn} />
+            <Table dataSource={userList} columns={UserColumn} />
         </Card>
     )
 }
